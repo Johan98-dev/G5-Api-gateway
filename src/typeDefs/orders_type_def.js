@@ -13,12 +13,12 @@ const ordersTypeDefs = gql `
     type Detail{
         client_id: String
         pay_method: String
-        products: Product
+        products: [Product]
     }
 
     type Order{
         order_id: String
-        detail: Detail
+        detail: [Detail]
     }
 
     type StatusC{
@@ -27,8 +27,25 @@ const ordersTypeDefs = gql `
 
     input OrderAddInput {
         order_id: String!
-        detail: Detail
+        detail: [OrderDetail]
     }
+
+    input OrderDetail{
+        client_id: String
+        pay_method: String
+        products: [Product]
+    }
+
+    input OrderDetailProduct{
+        product_id: Int!
+        amount: Int
+        unit_price: Float
+        iva: Float
+        subtotal_price: Float
+        total_price: Float
+    }
+
+
 
     extend type Mutation {
         orderAdd(orderAdd: OrderAddInput!): StatusC
