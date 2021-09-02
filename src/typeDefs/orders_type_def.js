@@ -18,7 +18,7 @@ const ordersTypeDefs = gql `
 
     type Order{
         order_id: String
-        detail: [Detail]
+        detail: Detail
     }
 
     type StatusC{
@@ -38,12 +38,12 @@ const ordersTypeDefs = gql `
 
 
 
-    extend type Mutation {
-        orderAdd(orderAdd: OrderAddInput!): StatusC
+    type Mutation {
+        orderAdd(orderAdd: OrderAddInput!): Order
     }
 
-    extend type Query {
-        orderAll: [Order]!
+    type Query {
+        orderAll: [Order]
     }
     
     
