@@ -16,7 +16,7 @@ const server = new ApolloServer({
         clientsAPI: new ClientsAPI(),
         usersAPI: new UsersAPI(),
         productsAPI: new ProductsAPI(),
-        OrdersAPI: new OrdersAPI(),
+        ordersAPI: new OrdersAPI(),
     }),
     introspection: true,
     playground: true

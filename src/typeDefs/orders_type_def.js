@@ -1,7 +1,7 @@
 const { gql } = require('apollo-server');
 
 const ordersTypeDefs = gql `
-    type Product {
+    type Products {
         product_id: Int!
         amount: Int
         unit_price: Float
@@ -13,7 +13,7 @@ const ordersTypeDefs = gql `
     type Detail{
         client_id: String
         pay_method: String
-        products: [Product]
+        products: [Products]
     }
 
     type Order{
@@ -26,23 +26,14 @@ const ordersTypeDefs = gql `
     }
 
     input OrderAddInput {
-        order_id: String!
-        detail: [OrderDetail]
-    }
-
-    input OrderDetail{
         client_id: String
         pay_method: String
-        products: [Product]
+        products: [OrderDetailProduct]
     }
 
     input OrderDetailProduct{
         product_id: Int!
         amount: Int
-        unit_price: Float
-        iva: Float
-        subtotal_price: Float
-        total_price: Float
     }
 
 
